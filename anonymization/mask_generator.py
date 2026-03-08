@@ -18,7 +18,7 @@ try:
     SAM2_AVAILABLE = True
 except ImportError:
     SAM2_AVAILABLE = False
-    logger.warning("SAM 2 not available. Using fallback mask generation.")
+    logger.info("SAM 2 not installed – using fallback elliptical mask generation")
 
 # Try to import MobileSAM as alternative
 try:
@@ -26,7 +26,7 @@ try:
     MOBILE_SAM_AVAILABLE = True
 except ImportError:
     MOBILE_SAM_AVAILABLE = False
-    logger.warning("MobileSAM not available. Using basic fallback.")
+    logger.info("MobileSAM not installed – using basic elliptical fallback")
 
 
 class MaskGenerator:
