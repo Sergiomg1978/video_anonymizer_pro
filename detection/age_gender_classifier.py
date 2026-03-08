@@ -18,7 +18,7 @@ try:
     INSIGHTFACE_AVAILABLE = True
 except (ImportError, Exception) as e:
     INSIGHTFACE_AVAILABLE = False
-    logger.warning(f"InsightFace not available, age/gender classification will use heuristics: {e}")
+    logger.info(f"InsightFace not installed – age/gender classification will use heuristics")
 
 try:
     import cv2

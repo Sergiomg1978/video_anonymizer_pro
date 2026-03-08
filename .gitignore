@@ -22,3 +22,17 @@ venv/
 *.session-journal
 *.json.bak
 .pytest_cache/
+
+# Downloaded model weights (large binaries)
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.caffemodel
+models/*.tflite
+models/*.caffemodel
+models/*.prototxt
+!models/.gitkeep
+
+# Misc
+nul

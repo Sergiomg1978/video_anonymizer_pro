@@ -85,6 +85,17 @@ class HeadDetector:
             self._use_fallback = True
             return
 
+        import os
+        if not os.path.exists(self.model_path):
+            # Head model not available – silently use fallback
+            logger.info(
+                f"Head model ({self.model_path}) not found. "
+                "Using face-expansion fallback (this is normal)."
+            )
+            self.model = None
+            self._use_fallback = True
+            return
+
         try:
             self.model = YOLO(self.model_path)
             if self.device != "cpu":
@@ -97,9 +108,9 @@ class HeadDetector:
                     self.device = "cpu"
             logger.info(f"YOLO head model loaded ({self.model_path}) on {self.device}")
         except Exception as e:
-            logger.warning(
+            logger.info(
                 f"Failed to load YOLO head model ({self.model_path}): {e}. "
-                "Will use face-expansion fallback."
+                "Using face-expansion fallback."
             )
             self.model = None
             self._use_fallback = True
